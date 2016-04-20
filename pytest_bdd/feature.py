@@ -159,23 +159,21 @@ def get_features(paths, **kwargs):
 
 
 def is_table_line(line):
-    """Detects table line.
+    """Detect table line.
 
     :param `string` line: the line to inspect
 
     :return: `bool`.
-
     """
     return line.startswith('|') and line.endswith('|')
 
 
 def parse_table_line(line):
-    """Returns cells contained in a table line.
+    """Parse cells contained in a table line.
 
     :param `string` line: the line to parse (stripped)
 
     :return: `string list`.
-
     """
     return [l.strip() for l in line.split("|")[1:-1]]
 
@@ -258,11 +256,19 @@ class Table(object):
 
 
 class Examples(Table):
-    pass
+    """Examples table
+    Used for Gherkin test parametrization of tests.
+    This is the same class as Table but with different name for easier
+    interactive debugging.
+    """
 
 
 class DataTable(Table):
-    pass
+    """Data table
+    Used to provide fixture injection for steps.
+    This is the same class as Table but with different name for easier
+    interactive debugging.
+    """
 
 
 class Feature(object):
